@@ -1,4 +1,3 @@
-
 import {
     Common
 } from './common';
@@ -15,16 +14,16 @@ class Global {
         this.player = player
     }
 
-    frame(ctx){
+    frame(ctx) {
         this.updateScore()
         ctx.fillStyle = '#000000'
         ctx.font = `${parseInt(this.winWidth/30)}px Arial`
-        ctx.fillText(`得分:${parseInt(this.score)} | 玩家位置:x:${parseInt(this.player.x)} y:${parseInt(this.player.y)}`, 50,100)    
+        ctx.fillText(`得分:${parseInt(this.score)} | 玩家位置:x:${parseInt(this.player.x)} y:${parseInt(this.player.y)} | speed:x:${parseInt(this.player.xSpeed)} y:${(this.player.ySpeed)}`, 50, 100)
     }
 
-    updateScore(){
+    updateScore() {
         let now = Common.getMoment()
-        this.score = (now - this.startTime)*this.scoreMultiBase
+        this.score = (now - this.startTime) * this.scoreMultiBase
     }
 
     static newGlobal(winWidth, winHeight, player) {

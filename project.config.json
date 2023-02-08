@@ -1,1 +1,12 @@
-{"setting":{"urlCheck":true,"es6":true,"postcss":true,"minified":true,"newFeature":true,"autoCompile":true},"appid":"tt86e0f05d19df582702","projectname":"BenRun"}
+{
+    "setting": {
+        "urlCheck": true,
+        "es6": true,
+        "postcss": true,
+        "minified": true,
+        "newFeature": true,
+        "autoCompile": true
+    },
+    "appid": "ttf6ef805269d0282902",
+    "projectname": "BenRun"
+}

@@ -7,6 +7,9 @@ import {
 import {
     TouchInput
 } from './src/input';
+import {
+    Active
+} from './src/active';
 
 
 let systemInfo = tt.getSystemInfoSync()
@@ -15,31 +18,34 @@ let ctx = canvas.getContext('2d')
 
 let mainGlobal
 let mainPlayer
+let mainActive
 
 let winWidth = systemInfo.windowWidth
 let winHeight = systemInfo.windowHeight
 
 
-
-
 function initGame(userInfo){
-    mainPlayer = Player.newPlayer(userInfo.nickName, userInfo.avatarUrl, winWidth, winHeight)
+    mainActive = Active.newActive(winWidth, winHeight)
+    mainPlayer = Player.newPlayer(userInfo.nickName, userInfo.avatarUrl, winWidth, winHeight, mainActive)
     mainGlobal = Global.newGlobal(winWidth, winHeight, mainPlayer)
+
 }
 
 function startGame(){
     TouchInput.startListening(mainPlayer)
+    mainActive.start()
     startFrame()
 }
 
 function startFrame() {
     ctx.clearRect(0,0,winWidth,winHeight)
+    mainActive.move()
+    mainPlayer.move()
+    mainActive.draw(ctx)
+    mainPlayer.draw(ctx)
     mainGlobal.frame(ctx)
-    mainPlayer.frame(ctx)
     requestAnimationFrame(startFrame);
 }
-
-
 
 
 
